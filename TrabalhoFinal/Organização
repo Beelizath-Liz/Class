@@ -1,10 +1,10 @@
-- [ ] Tela de inicio
+- [X] Tela de inicio
         - [X] Visual protótipo do menu
     - [X] Função de iniciar jogo
     - [X] Função de sair
-    - [ ] Função de sobre
+    - [X] Função de sobre
            -[X] Prototipos
-        -[ ] Sobre criadora
+        -[X] Sobre criadora
         -[X] Sobre jogo
 
 - [ ] Gameplay
@@ -33,4 +33,6 @@
     - [ ] Visual da tela de inicio
     - [ ] Visual de cada frasco
         - [ ] Alinhar numero de frasco por dificuldade
+    - [ ] revisar os Sobre
+        
     
