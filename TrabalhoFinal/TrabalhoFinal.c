@@ -9,8 +9,9 @@ void sobreCriadora();
 void limpar_buffer();
 
 int main(){
+    int dificuldade;
+    char menuResult;
     while(True){ // Loop infinito para exibir o menu até que o usuário escolha sair
-        char menuResult;
         menuResult = menu();
         printf("\nOpcao selecionada: %c\n", menuResult); // Exibe a opção selecionada pelo usuário, APAGAR
 
@@ -35,15 +36,16 @@ int main(){
         printf("Teste para ver se o jogo inicia corretamente\n"); //Teste testar a opção 1 do menu, APAGAR
 
         while(True){ //Loop infinito para o jogo, até que o usuário vença ou saia do jogo
-            int opcaoJogo;
-            printf("\nDigite 1 para jogar ou 2 para sair: "); //Menu subistituto para jogo, APAGAR
-            scanf("%d", &opcaoJogo);
-            if(opcaoJogo == 1){
-                printf("Iniciando o jogo...\n");
-                // Lógica do jogo aqui
-            } else {
+            
+            printf("\nSelecione a dificuldade: "); //Menu subistituto para jogo, APAGAR
+            printf("\n1-Facil\t\t2-Medio\t\t3-Dificil\t4-Sair\n");
+            scanf("%d", &dificuldade);
+            if(dificuldade == 4){
                 printf("Saindo do jogo...\n");
                 break; // Sai do loop do jogo e volta para o menu
+            } else {
+                printf("Iniciando o jogo...\n");
+                // Lógica do jogo aqui
             }
         }
 
@@ -83,5 +85,7 @@ void sobreCriadora(){
     printf("\n\t!!Sobre a criadora!!\n\n");
     printf("Meu nome e Elizabeth Ferreira, tenho 19 anos e sou estudante de Ciencia da Computacao na UFOP.\n");
     printf("Este jogo foi desenvolvido como parte do meu Trabalho Final da disciplina de introducao a programacao.\n");
+    printf("No momento eu estou estudando a linguagem C na faculdade, entao este projeto foi uma excelente oportunidade\npara aplicar os conceitos aprendidos nas aulas.\n");
+
 }
 
