@@ -1,0 +1,4 @@
+Pasta dedicada ao trabalho final de introdução a programação, feito por Elizabeth Ferreira de Faria pela Universidade Federal de Ouro Preto
+
+Sobre o trabalho: ele consiste em fazer um Jogo de frascos com liquidos coloridos, onde o usuario deve separar todas as cores
+devemos utilizar apenas o terminal, e a linguagem C
