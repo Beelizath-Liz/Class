@@ -3,31 +3,32 @@
 #include <time.h>
 #define True 1
 
-int menu();
+char menu();
 void sobreJogo();
 void sobreCriadora();
+void limpar_buffer();
 
 int main(){
     while(True){ // Loop infinito para exibir o menu até que o usuário escolha sair
-        int menuResult;
+        char menuResult;
         menuResult = menu();
-        printf("\nOpcao selecionada: %d\n", menuResult); // Exibe a opção selecionada pelo usuário, APAGAR
+        printf("\nOpcao selecionada: %c\n", menuResult); // Exibe a opção selecionada pelo usuário, APAGAR
 
         switch(menuResult) { //Switch da seleção do menu;
-            case 1:
+            case '1':
                 // Lógica para iniciar o jogo
                 break;
-            case 2:
+            case '2':
                 sobreJogo();
                 continue;
-            case 3:
+            case '3':
                 sobreCriadora();
                 continue;
-            case 4:
+            case '4':
                 printf("\n\nSaindo do programa...\n"); //Unica forma correta de sair do jogo, indo pro menu
                 return 0;
             default:
-                printf("Opção inválida!\n");
+                printf("Opcao invalida!\n");
                 continue;
         }
 
@@ -49,13 +50,20 @@ int main(){
     }
 }
 
-int menu(){
-    int opcao;
+void limpar_buffer(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {
+    }
+}
+
+char menu(){
+    char opcao;
     printf("\t!!Bem vindo!!\n\n");
     printf("Selecione:\n");
     printf("1-Iniciar jogo\t\t2-Sobre o jogo\n3-Sobre a criadora\t4-Sair\n\n");
     printf("Digite a opcao desejada: ");
-    scanf("%d", &opcao);
+    scanf("%c", &opcao);
+    limpar_buffer();
     return opcao;
 }
 
@@ -76,3 +84,4 @@ void sobreCriadora(){
     printf("Meu nome e Elizabeth Ferreira, tenho 19 anos e sou estudante de Ciencia da Computacao na UFOP.\n");
     printf("Este jogo foi desenvolvido como parte do meu Trabalho Final da disciplina de introducao a programacao.\n");
 }
+
