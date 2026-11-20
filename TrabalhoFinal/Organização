@@ -18,6 +18,7 @@
         - [ ] Sistema de nivel
         - [ ] Botão de sair dentro das fases
         - [ ] Caso nao exista movimentos vencedores, tela de game over
+        - [ ] Salvar nivel em arquivo
     - [ ] Sistema de dificuldade
         - [ ] Seleção de dificuldade no inicio
         - [ ] Adição de dificuldade por nível
