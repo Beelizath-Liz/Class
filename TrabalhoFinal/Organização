@@ -17,8 +17,12 @@
         - [ ] Vencer jogo ao separar todos
         - [ ] Sistema de nivel
         - [ ] Botão de sair dentro das fases
-        - [ ] 
+        - [ ] Caso nao exista movimentos vencedores, tela de game over
     - [ ] Sistema de dificuldade
+        - [ ] Seleção de dificuldade no inicio
+        - [ ] Adição de dificuldade por nível
+        - [ ] Calculo com base no nivel de dificuldade
+            - [ ] Função matemática
 
 - [ ] Visuais
     - [ ] Visual da tela de inicio
