@@ -61,6 +61,7 @@ int menu(){
 
 void sobreJogo(){
     printf("\n\t!!Sobre o jogo!!\n\n");
+    printf("O jogo consiste em organizar os liquidos de diferentes cores em frascos, de forma que cada frasco contenha apenas uma cor.\n");
     printf("\t=== COMO JOGAR ===\nObjetivo: Organize os liquidos ate que cada frasco contenha apenas UMA cor.");
     printf("\n\tRegras:\n");
     printf("1. Escolha o frasco de origem e o frasco de destino.\n");
