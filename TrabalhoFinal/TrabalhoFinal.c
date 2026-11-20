@@ -13,7 +13,7 @@ int main(){
         menuResult = menu();
         printf("\nOpcao selecionada: %d\n", menuResult); // Exibe a opção selecionada pelo usuário, APAGAR
 
-        switch(menuResult) {
+        switch(menuResult) { //Switch da seleção do menu;
             case 1:
                 // Lógica para iniciar o jogo
                 break;
@@ -31,6 +31,8 @@ int main(){
                 continue;
         }
 
+
+
     }
 }
 
@@ -46,7 +48,13 @@ int menu(){
 
 void sobreJogo(){
     printf("\n\t!!Sobre o jogo!!\n\n");
-    printf("Boa sorte!\n\n");
+    printf("\t=== COMO JOGAR ===\nObjetivo: Organize os liquidos ate que cada frasco contenha apenas UMA cor.");
+    printf("\n\tRegras:\n");
+    printf("1. Escolha o frasco de origem e o frasco de destino.\n");
+    printf("2. Voce so pode despejar um liquido se o frasco de destino estiver VAZIO\n   ou se a cor do topo for IGUAL a cor que voce esta movendo.\n");
+    printf("3. O frasco de destino precisa ter espaco disponivel.\n");
+    printf("4. Vence quando todos os frascos com liquido estiverem completos e de uma so cor!\n");
+    printf("\tBoa sorte!\n\n");
 }
 
 void sobreCriadora(){
