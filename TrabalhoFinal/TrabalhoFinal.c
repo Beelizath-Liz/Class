@@ -31,7 +31,20 @@ int main(){
                 continue;
         }
 
+        printf("Teste para ver se o jogo inicia corretamente\n"); //Teste testar a opção 1 do menu, APAGAR
 
+        while(True){ //Loop infinito para o jogo, até que o usuário vença ou saia do jogo
+            int opcaoJogo;
+            printf("\nDigite 1 para jogar ou 2 para sair: "); //Menu subistituto para jogo, APAGAR
+            scanf("%d", &opcaoJogo);
+            if(opcaoJogo == 1){
+                printf("Iniciando o jogo...\n");
+                // Lógica do jogo aqui
+            } else {
+                printf("Saindo do jogo...\n");
+                break; // Sai do loop do jogo e volta para o menu
+            }
+        }
 
     }
 }
