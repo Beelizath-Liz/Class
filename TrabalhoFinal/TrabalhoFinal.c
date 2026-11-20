@@ -6,7 +6,7 @@
 int menu();
 
 int main(){
-    while(True){
+    while(True){ // Loop infinito para exibir o menu até que o usuário escolha sair
         int menuResult;
         menuResult = menu();
         printf("\nOpcao selecionada: %d\n", menuResult); // Exibe a opção selecionada pelo usuário, APAGAR
@@ -15,7 +15,7 @@ int main(){
             printf("Saindo do programa...\n");
             break;
         }
-        
+
     }
     printf("\nPrograma encerrado.\n");
     return 0;
