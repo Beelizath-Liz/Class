@@ -1,0 +1,27 @@
+- [ ] Tela de inicio
+    - [ ] Função de iniciar jogo
+    - [ ] Função de sair
+    - [ ] Função de sobre
+
+- [ ] Gameplay
+    - [ ] Estrutura base
+        - [ ] Cores aleatorias em cada frasco
+            - [ ] Definir número e simbolos de cores
+        - [ ] Frasco vazio
+        - [ ] Cores indo de frasco pra frasco
+            - [ ] Cores iguais indo
+                - [ ] O ultimo valor indo
+                - [ ] Valor sendo igual indo junto
+                - [ ] Bloqueio caso nao haja espaço
+    - [ ] Refino
+        - [ ] Vencer jogo ao separar todos
+        - [ ] Sistema de nivel
+        - [ ] Botão de sair dentro das fases
+        - [ ] 
+    - [ ] Sistema de dificuldade
+
+- [ ] Visuais
+    - [ ] Visual da tela de inicio
+    - [ ] Visual de cada frasco
+      - [ ] Alinhar numero de frasco por dificuldade
+    
