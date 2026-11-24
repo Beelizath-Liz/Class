@@ -6,14 +6,15 @@
 #define ARQUIVO_RANKING "ranking.rnk"
 #define MAX_NOME 51
 #define CAPACIDADE_FRASCO 4
+#define ARQUIVO_SAVE "save.potion"
 
-typedef struct {
+typedef struct { //estrutura reduzida usada apenas para o ranking
     char nome[51];
     int nivel;
     int movimentos;
 } Ranking;
 
-typedef struct {
+typedef struct { //estrutura usada para criar o perfil, e salvar o estado do jogo
     char nome[MAX_NOME];
     int nivel;           /* 1 = Facil, 2 = Medio, 3 = Dificil */
     int numCores;        /* 3, 5 ou 7 */
@@ -46,22 +47,22 @@ int main(){
                 break;
             case 'a':
             case 'A':
-                sobreJogo(); //ajuda
+                sobreJogo(); //ajuda e reinicia o menu
                 continue;
             case 'r':
             case 'R':
-                criarRankingTeste(); //Cria ranking de teste, APAGAR
+                //criarRankingTeste(); //Cria ranking de teste, APAGAR
                 exibirRankingSeExistir(); //Visualizar ranking
                 continue;
             case '3':
-                sobreCriadora();
+                sobreCriadora(); //ajustar botão
                 continue;
             case 'x':
             case 'X':
                 printf("\n\nSaindo do programa...\n"); //Unica forma correta de sair do jogo, indo pro menu
                 return 0;
             default:
-                printf("Opcao invalida!\n");
+                printf("Opcao invalida!\n"); //qualquer opção nao no menu, apagar
                 continue;
         }
 
@@ -72,13 +73,13 @@ int main(){
     }
 }
 
-void limpar_buffer(void) {
+void limpar_buffer(void) { //limpar buffer
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {
     }
 }
 
-char menu() {
+char menu() { //texto do menu, que retorna a opção selecionada
     char opcao;
     printf("\t!!Bem vindo!!\n\n");
     printf("Selecione:\n");
@@ -89,7 +90,7 @@ char menu() {
     return opcao;
 }
 
-void sobreJogo(){
+void sobreJogo(){ //sobre o jogo, corrijir o guia do sobre, tem muitas informações incompletas
     printf("\n\t!!Sobre o jogo!!\n\n");
     printf("O jogo consiste em organizar os liquidos de diferentes cores em frascos, de forma que cada frasco contenha apenas uma cor.\n");
     printf("\t=== COMO JOGAR ===\nObjetivo: Organize os liquidos ate que cada frasco contenha apenas UMA cor.");
@@ -101,7 +102,7 @@ void sobreJogo(){
     printf("\tBoa sorte!\n\n");
 }
 
-void sobreCriadora(){
+void sobreCriadora(){ //texto de resumo sobre mim, tenho que implementar um botão pra isso
     printf("\n\t!!Sobre a criadora!!\n\n");
     printf("Meu nome e Elizabeth Ferreira, tenho 19 anos e sou estudante de Ciencia da Computacao na UFOP.\n");
     printf("Este jogo foi desenvolvido como parte do meu Trabalho Final da disciplina de introducao a programacao.\n");
@@ -109,7 +110,7 @@ void sobreCriadora(){
 
 }
 
-void exibirRankingSeExistir(void) {
+void exibirRankingSeExistir(void) { //botão do menu que procura arquivo de save de rankings
     FILE *fp = fopen(ARQUIVO_RANKING, "rb");
     if (fp == NULL) {
         printf("\nAinda nao ha registros no ranking.\n");
@@ -132,7 +133,7 @@ void exibirRankingSeExistir(void) {
     }
 }
 
-void criarRankingTeste(void) {
+/*void criarRankingTeste(void) { cria um ranking de teste, isso DEVE ser apagado depois
     FILE *fp = fopen(ARQUIVO_RANKING, "wb");
     if (fp == NULL) {
         printf("Erro ao criar arquivo de teste.\n");
@@ -147,16 +148,17 @@ void criarRankingTeste(void) {
     fwrite(teste, sizeof(Ranking), 2, fp);
     fclose(fp);
 }
+*/
 
-void criarperfil(Partida *jogador) {
+void criarperfil(Partida *jogador) { //cria perfil
     int valido = 0;
 
-    printf("\nDigite o nome do jogador: ");
+    printf("\nDigite o nome do jogador: "); //nome do jogador
     scanf(" %50[^\n]", jogador->nome);
     limpar_buffer();
 
     while (!valido) {
-        printf("\nSelecione a dificuldade:\n");
+        printf("\nSelecione a dificuldade:\n");  //dificuldade
         printf("1 - Facil\n2 - Medio\n3 - Dificil\n");
         printf("Opcao: ");
         scanf("%d", &jogador->nivel);
@@ -169,7 +171,7 @@ void criarperfil(Partida *jogador) {
         }
     }
 
-    switch (jogador->nivel) {
+    switch (jogador->nivel) {  //com a dificuldade ja pega e separa os outros dados relevantes
         case 1:
             jogador->numCores = 3;
             jogador->numFrascos = 5;
@@ -184,7 +186,18 @@ void criarperfil(Partida *jogador) {
             break;
     }
 
-    jogador->movimentos = 0;
-    jogador->jogoAtivo = 1;
-    jogador->frascos = NULL;
+    jogador->movimentos = 0; //acabou de criar, entao movimentos 0
+    jogador->jogoAtivo = 1; //nao sei pra que isso
+    jogador->frascos = NULL; //nao sei tbm
+}
+
+void continuarJogo(void) { //função que continua jogo, no momento ela nao faz nada se achar o save
+    FILE *fp = fopen(ARQUIVO_SAVE, "rb");
+    if (fp == NULL) {
+        printf("\nNao ha jogos salvos no momento.\n");
+        return;
+    }
+
+    fclose(fp);
+    printf("\nArquivo de save encontrado! (Carregamento ainda sera implementado)\n");
 }
