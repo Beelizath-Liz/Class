@@ -2,11 +2,21 @@
 #include <stdlib.h>
 #include <time.h>
 #define True 1
+#define MAX_RANKING 10
+#define ARQUIVO_RANKING "ranking.rnk"
+
+typedef struct {
+    char nome[51];
+    int nivel;
+    int movimentos;
+} Ranking;
 
 char menu();
 void sobreJogo();
 void sobreCriadora();
 void limpar_buffer();
+void exibirRankingSeExistir(void);
+void criarRankingTeste(void);
 
 int main(){
     int dificuldade;
@@ -16,16 +26,23 @@ int main(){
         printf("\nOpcao selecionada: %c\n", menuResult); // Exibe a opção selecionada pelo usuário, APAGAR
 
         switch(menuResult) { //Switch da seleção do menu;
-            case '1':
-                // Lógica para iniciar o jogo
+            case 'n':
+            case 'N':
                 break;
-            case '2':
-                sobreJogo();
+            case 'a':
+            case 'A':
+                sobreJogo(); //ajuda
+                continue;
+            case 'r':
+            case 'R':
+                criarRankingTeste(); //Cria ranking de teste, APAGAR
+                exibirRankingSeExistir(); //Visualizar ranking
                 continue;
             case '3':
                 sobreCriadora();
                 continue;
-            case '4':
+            case 'x':
+            case 'X':
                 printf("\n\nSaindo do programa...\n"); //Unica forma correta de sair do jogo, indo pro menu
                 return 0;
             default:
@@ -37,7 +54,7 @@ int main(){
 
         while(True){ //Loop infinito para o jogo, até que o usuário vença ou saia do jogo
             
-            printf("\nSelecione a dificuldade: "); //Menu subistituto para jogo, APAGAR
+            printf("\nSelecione a dificuldade: "); //colocar isso numa função que devolve uma struct
             printf("\n1-Facil\t\t2-Medio\t\t3-Dificil\t4-Sair\n");
             scanf("%d", &dificuldade);
             if(dificuldade == 4){
@@ -58,11 +75,11 @@ void limpar_buffer(void) {
     }
 }
 
-char menu(){
+char menu() {
     char opcao;
     printf("\t!!Bem vindo!!\n\n");
     printf("Selecione:\n");
-    printf("1-Iniciar jogo\t\t2-Sobre o jogo\n3-Sobre a criadora\t4-Sair\n\n");
+    printf("N -Iniciar jogo\t\tR -Visualizar ranking\nA -Sobre o jogo\t\t3 -Sobre a criadora\nX -Sair\n\n");
     printf("Digite a opcao desejada: ");
     scanf("%c", &opcao);
     limpar_buffer();
@@ -89,3 +106,41 @@ void sobreCriadora(){
 
 }
 
+void exibirRankingSeExistir(void) {
+    FILE *fp = fopen(ARQUIVO_RANKING, "rb");
+    if (fp == NULL) {
+        printf("\nAinda nao ha registros no ranking.\n");
+        return;
+    }
+
+    Ranking tab[MAX_RANKING];
+    int qtd = (int)fread(tab, sizeof(Ranking), MAX_RANKING, fp);
+    fclose(fp);
+
+    if (qtd <= 0) {
+        printf("\nAinda nao ha registros no ranking.\n");
+        return;
+    }
+
+    printf("\n=== RANKING ===\n");
+    for (int i = 0; i < qtd; i++) {
+        printf("%d. %s | Nivel: %d | Movimentos: %d\n",
+               i + 1, tab[i].nome, tab[i].nivel, tab[i].movimentos);
+    }
+}
+
+void criarRankingTeste(void) {
+    FILE *fp = fopen(ARQUIVO_RANKING, "wb");
+    if (fp == NULL) {
+        printf("Erro ao criar arquivo de teste.\n");
+        return;
+    }
+
+    Ranking teste[2] = {
+        {"Elizabeth", 3, 12},
+        {"Ana", 1, 15}
+    };
+
+    fwrite(teste, sizeof(Ranking), 2, fp);
+    fclose(fp);
+}
