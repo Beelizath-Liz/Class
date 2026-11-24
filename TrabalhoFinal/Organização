@@ -1,11 +1,13 @@
-- [X] Tela de inicio
+- [ ] Tela de inicio
         - [X] Visual protótipo do menu
-    - [X] Função de iniciar jogo
+    - [X] Função de iniciar novo jogo
+        - [ ] Perfil de jogador
     - [X] Função de sair
     - [X] Função de sobre
            -[X] Prototipos
         -[X] Sobre criadora
-        -[X] Sobre jogo
+        -[X] Sobre jogo/instruções
+        
 
 - [ ] Gameplay
     - [ ] Estrutura base
@@ -23,6 +25,8 @@
         - [ ] Botão de sair dentro das fases
         - [ ] Caso nao exista movimentos vencedores, tela de game over
         - [ ] Salvar nivel em arquivo
+                - [ ] Carregar jogo no menu inicial
+        - [ ] Ranking
     - [ ] Sistema de dificuldade
         - [ ] Seleção de dificuldade no inicio
         - [ ] Adição de dificuldade por nível
@@ -34,5 +38,7 @@
     - [ ] Visual de cada frasco
         - [ ] Alinhar numero de frasco por dificuldade
     - [ ] revisar os Sobre
+
+- [ ] Correção de erros
         
     
