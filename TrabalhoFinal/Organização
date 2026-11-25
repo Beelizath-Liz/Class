@@ -1,7 +1,7 @@
-- [ ] Tela de inicio
+- [X] Tela de inicio
         - [X] Visual protótipo do menu
     - [X] Função de iniciar novo jogo
-        - [ ] Perfil de jogador
+        - [X] Perfil de jogador
     - [X] Função de sair
     - [X] Função de sobre
            -[X] Prototipos
@@ -26,8 +26,12 @@
         - [ ] Caso nao exista movimentos vencedores, tela de game over
         - [ ] Salvar nivel em arquivo
                 - [ ] Carregar jogo no menu inicial
+                     - [x] input de carregar jogo   
         - [ ] Ranking
-    - [ ] Sistema de dificuldade
+             - [x] Botão de ler rank
+             - [ ] Registrar rank
+                  - [ ] comparar se ta nas melhores 10 partidas
+   - [ ] Sistema de dificuldade
         - [ ] Seleção de dificuldade no inicio
         - [ ] Adição de dificuldade por nível
         - [ ] Calculo com base no nivel de dificuldade
