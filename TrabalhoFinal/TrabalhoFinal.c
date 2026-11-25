@@ -31,6 +31,7 @@ void limpar_buffer();
 void exibirRankingSeExistir();
 void criarRankingTeste();
 void criarperfil(Partida *jogador);
+int continuarJogo(void);
 
 int main(){
     char menuResult;
@@ -57,6 +58,12 @@ int main(){
             case '3':
                 sobreCriadora(); //ajustar botão
                 continue;
+            case 'c':
+            case 'C':
+                if (continuarJogo() == 0) { //se nao tiver jogo salvo
+                    continue;
+                }
+                break;
             case 'x':
             case 'X':
                 printf("\n\nSaindo do programa...\n"); //Unica forma correta de sair do jogo, indo pro menu
@@ -83,7 +90,7 @@ char menu() { //texto do menu, que retorna a opção selecionada
     char opcao;
     printf("\t!!Bem vindo!!\n\n");
     printf("Selecione:\n");
-    printf("N -Iniciar jogo\t\tR -Visualizar ranking\nA -Sobre o jogo\t\t3 -Sobre a criadora\nX -Sair\n\n");
+    printf("N -Iniciar jogo\t\t\tC -Continuar jogo\nR -Visualizar ranking\t\tA -Sobre o jogo\n3 -Sobre a criadora\t\tX -Sair\n\n");
     printf("Digite a opcao desejada: ");
     scanf("%c", &opcao);
     limpar_buffer();
@@ -191,13 +198,14 @@ void criarperfil(Partida *jogador) { //cria perfil
     jogador->frascos = NULL; //nao sei tbm
 }
 
-void continuarJogo(void) { //função que continua jogo, no momento ela nao faz nada se achar o save
+int continuarJogo(void) { //função que continua jogo, no momento ela nao faz nada se achar o save
     FILE *fp = fopen(ARQUIVO_SAVE, "rb");
     if (fp == NULL) {
         printf("\nNao ha jogos salvos no momento.\n");
-        return;
+        return 0;
     }
 
     fclose(fp);
     printf("\nArquivo de save encontrado! (Carregamento ainda sera implementado)\n");
+    return 1;
 }
